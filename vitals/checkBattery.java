@@ -27,11 +27,16 @@ public class checkBattery {
 		
 		if(unit.equals("F"))
 		{
-			temperature = ((temperature - 32) * 5)/9;
+			temperature = convertFarenheitToCelsius(temperature);
 		}
-		System.out.println(temperature);
+		
 		return new vaildateTolerance(Min_Temperature,Max_Temperature)
 				.checkTemperatureRange(temperature);
+	}
+
+	private static int convertFarenheitToCelsius(int temperature) 
+	{
+		return ((temperature - 32) * 5)/9;
 	}
 
 	private static boolean checkSOC(int soc) {
