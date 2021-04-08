@@ -76,6 +76,11 @@ public class Message {
 		}
 	}
 	
+	static void print(String type,boolean flag) {
+		String msg = !flag ? "Out of Range" : "Is In Range"; 
+		printMessage(String.format("%s %s",type,msg));
+	}
+	
 	static void printMessage(String message) {
 		System.out.println(message);
 	}

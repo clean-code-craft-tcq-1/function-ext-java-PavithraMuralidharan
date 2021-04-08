@@ -9,16 +9,21 @@ public class checkBattery {
 	private static int Max_SOC = 80;
 
 	private static float Max_Charge_Rate = 0.8f;
+	
+	static boolean isTemperature_OK = false;
+	static boolean isSOC_OK = false;
+	static boolean isChargeRate_OK = false;
+
 
 	public static boolean batteryIsOk(int temperature, int soc, float chargeRate, String unit) 
 	{
-		boolean isTemperature_OK = checkTemperature(temperature,unit);
-		boolean isSOC_OK = checkSOC(soc);
-		boolean isChargeRate_OK = checkChargeRate(chargeRate);
+		isTemperature_OK = checkTemperature(temperature,unit);
+		isSOC_OK = checkSOC(soc);
+		isChargeRate_OK = checkChargeRate(chargeRate);
 		
-		Message.printMessage((!isTemperature_OK) ? "Temperature Out of Range" : "Temperature Is In Range");
-		Message.printMessage((!isSOC_OK) ? "SOC Out of Range" : "SOC Is In Range");
-		Message.printMessage((!isChargeRate_OK) ? "ChargeRate Out of Range" : "ChargeRate Is In Range");
+		Message.print("Temperature",isTemperature_OK);
+		Message.print("SOC",isSOC_OK);
+		Message.print("ChargeRate",isChargeRate_OK);
 		
 		return (isTemperature_OK && isSOC_OK && isChargeRate_OK);
 	}
