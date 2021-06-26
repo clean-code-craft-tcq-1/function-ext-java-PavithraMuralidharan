@@ -1,9 +1,6 @@
-package extensions;
+package ext;
 
-public class UnitConversion 
-{
-	UnitConversion(){}
-
+public class UnitConversion {
 	static int convertFarenheitToCelsius(int temperature) 
 	{
 		return ((temperature - 32) * 5)/9;
