@@ -1,5 +1,8 @@
 package ext;
 
+import java.util.ArrayList;
+import java.util.List;
+
 public class CheckBattery {
 	
 	private static int Min_Temperature = 0;
@@ -9,18 +12,31 @@ public class CheckBattery {
 	private static int Max_SOC = 80;
 
 	private static float Max_Charge_Rate = 0.8f;
+	static boolean isTemperature_OK = false;
+	static boolean isSOC_OK = false;
+	static boolean isChargeRate_OK = false;
+	static List<String> output = new ArrayList<String>();
 
 	public static boolean batteryIsOk(int temperature, int soc, float chargeRate, String unit) 
 	{
-		boolean isTemperature_OK = checkTemperature(temperature,unit);
-		boolean isSOC_OK = checkSOC(soc);
-		boolean isChargeRate_OK = checkChargeRate(chargeRate);
-		
-		Logger.printMessage((!isTemperature_OK) ? "Temperature Out of Range" : "Temperature Is In Range");
-		Logger.printMessage((!isSOC_OK) ? "SOC Out of Range" : "SOC Is In Range");
-		Logger.printMessage((!isChargeRate_OK) ? "ChargeRate Out of Range" : "ChargeRate Is In Range");
-		
+		setFlag(temperature, soc, chargeRate, unit);
+		checkFlagAndPrint();
+				
 		return (isTemperature_OK && isSOC_OK && isChargeRate_OK);
+	}
+
+	private static void checkFlagAndPrint() {
+		output.add((!isTemperature_OK) ? "Temperature Out of Range" : "Temperature Is In Range");
+		output.add((!isSOC_OK) ? "SOC Out of Range" : "SOC Is In Range");
+		output.add((!isChargeRate_OK) ? "ChargeRate Out of Range" : "ChargeRate Is In Range");
+		output.forEach(result -> System.out.println(result));
+	}
+
+	private static void setFlag(int temperature, int soc, float chargeRate, String unit) {
+		 isTemperature_OK = checkTemperature(temperature,unit);
+		 isSOC_OK = checkSOC(soc);
+		 isChargeRate_OK = checkChargeRate(chargeRate);
+		
 	}
 
 	private static boolean checkTemperature(int temperature, String unit) {
