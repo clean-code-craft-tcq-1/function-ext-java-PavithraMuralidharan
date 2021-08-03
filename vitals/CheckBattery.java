@@ -37,9 +37,21 @@ public class CheckBattery {
 
 	private static void checkFlagAndSetMessage() 
 	{
+		checkTemperatureFlag();
+		checkSOCFlag();
+		checkChargeRateFlag();
+	}
+
+	private static void checkChargeRateFlag() {
+		result.add((!isChargeRate_OK) ? "ChargeRate Out of Range" : "ChargeRate Is In Range");		
+	}
+
+	private static void checkSOCFlag() {
+		result.add((!isSOC_OK) ? "SOC Out of Range" : "SOC Is In Range");		
+	}
+
+	private static void checkTemperatureFlag() {
 		result.add((!isTemperature_OK) ? "Temperature Out of Range" : "Temperature Is In Range");
-		result.add((!isSOC_OK) ? "SOC Out of Range" : "SOC Is In Range");
-		result.add((!isChargeRate_OK) ? "ChargeRate Out of Range" : "ChargeRate Is In Range");
 	}
 
 	private static void setFlag(int temperature, int soc, float chargeRate, String unit) {
