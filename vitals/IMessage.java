@@ -1,4 +1,4 @@
-package ext;
+package vitals;
 
 public interface IMessage {
 	

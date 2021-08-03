@@ -1,4 +1,4 @@
-package ext;
+package vitals;
 
 public class ChargeRateMessage implements IMessage {
 	enum CHARGERATE {

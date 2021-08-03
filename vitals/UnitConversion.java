@@ -1,4 +1,4 @@
-package ext;
+package vitals;
 
 public class UnitConversion {
 	static int convertFarenheitToCelsius(int temperature) 

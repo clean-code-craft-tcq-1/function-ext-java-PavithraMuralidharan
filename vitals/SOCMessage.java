@@ -1,4 +1,4 @@
-package ext;
+package vitals;
 
 public class SOCMessage implements IMessage
 {
@@ -16,14 +16,11 @@ public class SOCMessage implements IMessage
 			this.message = message;
 		}
 
-		public String getMessage() {
-			return message;
-		}
 	}
 
 	@Override
 	public String getMessage(String message) {
-		return STATEOFCHARGE.valueOf(message).getMessage();
+		return STATEOFCHARGE.valueOf(message).message;
 		
 	}
 
