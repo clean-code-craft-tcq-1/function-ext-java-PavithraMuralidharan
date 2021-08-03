@@ -26,11 +26,16 @@ public class CheckBattery {
 
 	private static void printOutput(int temperature, int soc, float chargeRate, String unit) {
 		setFlag(temperature, soc, chargeRate, unit);
-		checkFlagAndPrint();
-		result.forEach(item -> Logger.printMessage(item));
+		checkFlagAndSetMessage();
+		printToConsole();
 	}
 
-	private static void checkFlagAndPrint() 
+	private static void printToConsole() {
+		result.forEach(item -> Logger.printMessage(item));
+		
+	}
+
+	private static void checkFlagAndSetMessage() 
 	{
 		result.add((!isTemperature_OK) ? "Temperature Out of Range" : "Temperature Is In Range");
 		result.add((!isSOC_OK) ? "SOC Out of Range" : "SOC Is In Range");
@@ -41,7 +46,6 @@ public class CheckBattery {
 		 isTemperature_OK = checkTemperature(temperature,unit);
 		 isSOC_OK = checkSOC(soc);
 		 isChargeRate_OK = checkChargeRate(chargeRate);
-		
 	}
 
 	private static boolean checkTemperature(int temperature, String unit) {
