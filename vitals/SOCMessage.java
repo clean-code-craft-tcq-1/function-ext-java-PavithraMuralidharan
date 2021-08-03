@@ -20,7 +20,7 @@ public class SOCMessage implements IMessage
 
 	@Override
 	public String getMessage(String message) {
-		return STATEOFCHARGE.valueOf(message).message;
+		return "STATE OF CHARGE:" + STATEOFCHARGE.valueOf(message).message;
 		
 	}
 

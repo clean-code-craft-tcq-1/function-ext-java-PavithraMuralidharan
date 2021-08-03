@@ -19,6 +19,6 @@ public class ChargeRateMessage implements IMessage {
 
 	@Override
 	public String getMessage(String message) {
-		return CHARGERATE.valueOf(message).getMessage();
+		return "CHARGE RATE:" + CHARGERATE.valueOf(message).getMessage();
 	}
 }

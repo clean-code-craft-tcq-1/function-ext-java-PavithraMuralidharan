@@ -14,8 +14,17 @@ public class CheckChargeRate {
 	
 	public boolean checkRate(float chargeRate) 
 	{
-		if(!checkChargeRateBreached(chargeRate))
+		if(checkChargeRateBreached(chargeRate))
 		{
+			this.flag_chargeRate = false;
+		}
+		else if(checkChargeRateWarning(chargeRate))
+		{
+			this.flag_chargeRate = true;
+		}
+		else
+		{
+			Logger.printLogger("NORMAL", new ChargeRateMessage());
 			this.flag_chargeRate = true;
 		}
 		return flag_chargeRate;
@@ -26,7 +35,7 @@ public class CheckChargeRate {
 	{
 		if(chargeRate > maxValue)
 		{
-			Logger.printLogger("breach", new ChargeRateMessage());
+			Logger.printLogger("BREACH", new ChargeRateMessage());
 			return true;
 		}
 		return false;
@@ -38,7 +47,7 @@ public class CheckChargeRate {
 		float warningRate = maxValue - tolerance;
 		if(chargeRate >= warningRate || chargeRate <= maxValue)
 		{
-			Logger.printLogger("warning", new ChargeRateMessage());
+			Logger.printLogger("WARNING", new ChargeRateMessage());
 			return true;
 		}
 		return false;		

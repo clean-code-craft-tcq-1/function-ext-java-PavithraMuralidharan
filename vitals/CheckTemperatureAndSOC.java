@@ -32,8 +32,13 @@ public class CheckTemperatureAndSOC {
 		if (warning != null) {
 			temp_msg = warning;
 			this.flag_temperature = true;
-		} else if (breach != null) {
+		} 
+		else if (breach != null) {
 			temp_msg = breach;
+			this.flag_temperature = true;
+		}
+		else {
+			temp_msg = "NORMAL";
 			this.flag_temperature = true;
 		}
 		Logger.printLogger(temp_msg, new TemperatureMessage());
@@ -47,8 +52,13 @@ public class CheckTemperatureAndSOC {
 		if (warning != null) {
 			SOC_msg = warning;
 			this.flag_SOC = true;
-		} else if (breach != null) {
+		} 
+		else if (breach != null) {
 			SOC_msg = breach;
+			this.flag_SOC = true;
+		}
+		else {	
+			SOC_msg = "NORMAL";
 			this.flag_SOC = true;
 		}
 		Logger.printLogger(SOC_msg, new SOCMessage());

@@ -21,7 +21,7 @@ public class TemperatureMessage implements IMessage {
 	}
 	@Override
 	public String getMessage(String message) {
-		return TEMP.valueOf(message).getMessage();
+		return "TEMPERATURE:" + TEMP.valueOf(message).getMessage();
 	}
 
 }
