@@ -35,7 +35,7 @@ public class CheckTemperatureAndSOC {
 		} 
 		else if (breach != null) {
 			temp_msg = breach;
-			this.flag_temperature = true;
+			this.flag_temperature = false;
 		}
 		else {
 			temp_msg = "NORMAL";
@@ -55,7 +55,7 @@ public class CheckTemperatureAndSOC {
 		} 
 		else if (breach != null) {
 			SOC_msg = breach;
-			this.flag_SOC = true;
+			this.flag_SOC = false;
 		}
 		else {	
 			SOC_msg = "NORMAL";
